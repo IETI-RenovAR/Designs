@@ -38,7 +38,7 @@ public class DesignController {
         return ResponseEntity.ok(design);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<Design>> findByUserId(@PathVariable("userId") String userId) {
         List<Design> designs = designService.getDesignByUserId(userId);
         return ResponseEntity.ok(designs);
