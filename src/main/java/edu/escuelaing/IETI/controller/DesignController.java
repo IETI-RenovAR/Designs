@@ -39,7 +39,7 @@ public class DesignController {
         }
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<List<Design>> findByUserId(@PathVariable("userId") String userId) {
         List<Design> designs = designService.getDesignByUserId(userId);
         return ResponseEntity.ok(designs);
@@ -70,7 +70,7 @@ public class DesignController {
 
     // Cotizaciones de los diseños
 
-    @GetMapping("/{id}/quotation")
+    @GetMapping("/{id}/quotations")
     public ResponseEntity<List<Quotation>> getAllQuotations(@PathVariable("id")  String id) {
         try {
             List<Quotation> quotations = designService.getAllQuotations(id);
@@ -80,7 +80,7 @@ public class DesignController {
         }
     }
 
-    @GetMapping("/quotation/{idQuotation}")
+    @GetMapping("/quotations/{idQuotation}")
     public ResponseEntity<Quotation> findByQuotationId(@PathVariable("idQuotation") String idQuotation) {
         try {
             Quotation quotation = designService.getQuotationById(idQuotation);
@@ -90,7 +90,7 @@ public class DesignController {
         }
     }
 
-    @PostMapping("/{id}/quotation")
+    @PostMapping("/{id}/quotations")
     public ResponseEntity<Quotation> createQuotation(@PathVariable("id") String designId,
                                                      @RequestBody QuotationDTO quotationDTO) {
         try {
@@ -102,7 +102,7 @@ public class DesignController {
         }
     }
 
-    @PutMapping("/quotation/{idQuotation}")
+    @PutMapping("/quotations/{idQuotation}")
     public ResponseEntity<Quotation> updateQuotation(@PathVariable("idQuotation") String quotationId,
                                                      @RequestBody QuotationDTO quotationDTO) {
         try {
@@ -113,7 +113,7 @@ public class DesignController {
         }
     }
 
-    @DeleteMapping("/quotation/{idQuotation}")
+    @DeleteMapping("/quotations/{idQuotation}")
     public ResponseEntity<Void> deleteQuotation(@PathVariable("idQuotation") String quotationId) {
         designService.deleteQuotation(quotationId);
         return ResponseEntity.ok(null);
