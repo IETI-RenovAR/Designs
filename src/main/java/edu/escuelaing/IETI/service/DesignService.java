@@ -46,9 +46,9 @@ public class DesignService {
         updateDesign.setUserId(designDTO.getUserId());
         updateDesign.setName(designDTO.getName());
         updateDesign.setUrl(designDTO.getUrl());
-        updateDesign.setPublic(designDTO.isPublic());
+        updateDesign.setIsPublic(designDTO.getIsPublic());
         updateDesign.setState(designDTO.getState());
-        updateDesign.setSearchingCarpenter(designDTO.isSearchingCarpenter());
+        updateDesign.setSearchingCarpenter(designDTO.getSearchingCarpenter());
         updateDesign.setQuotations(designDTO.getQuotations());
         return designRepository.save(updateDesign);
     }

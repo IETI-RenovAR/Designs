@@ -20,17 +20,17 @@ public class Design {
     private String userId;
     private String name;
     private String url;
-    private boolean isPublic;
+    private Boolean isPublic;
     private DesignState state;
-    private boolean searchingCarpenter;
+    private Boolean searchingCarpenter;
     @DBRef
     private List<Quotation> quotations;
 
     public Design() {
     }
 
-    public Design(String id, String name, String userId, String url, boolean isPublic, DesignState state,
-                  boolean searchingCarpenter, List<Quotation> quotations) {
+    public Design(String id, String name, String userId, String url, Boolean isPublic, DesignState state,
+                  Boolean searchingCarpenter, List<Quotation> quotations) {
         this.id = id;
         this.name = name;
         this.userId = userId;
@@ -42,7 +42,7 @@ public class Design {
     }
 
     // Constructor que puede ser usado por el cliente cada vez que crea un diseño
-    public Design(String userId, String name, String url, boolean isPublic) {
+    public Design(String userId, String name, String url, Boolean isPublic) {
         this.id = null;
         this.userId = userId;
         this.name = name;
@@ -59,9 +59,9 @@ public class Design {
         this.userId = designDTO.getUserId();
         this.name = designDTO.getName();
         this.url = designDTO.getUrl();
-        this.isPublic = designDTO.isPublic();
+        this.isPublic = designDTO.getIsPublic();
         this.state = designDTO.getState();
-        this.searchingCarpenter = designDTO.isSearchingCarpenter();
+        this.searchingCarpenter = designDTO.getSearchingCarpenter();
         this.quotations = designDTO.getQuotations();
     }
 }
