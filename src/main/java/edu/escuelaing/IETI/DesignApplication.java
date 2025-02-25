@@ -1,13 +1,13 @@
-package org.adaschool.project;
+package edu.escuelaing.IETI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Design {
+public class DesignApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Design.class, args);
+        SpringApplication.run(DesignApplication.class, args);
     }
 
 }

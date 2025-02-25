@@ -1,16 +1,13 @@
 package edu.escuelaing.IETI.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Quo;
 import edu.escuelaing.IETI.dto.DesignDTO;
 import edu.escuelaing.IETI.dto.QuotationDTO;
 import edu.escuelaing.IETI.model.Design;
 import edu.escuelaing.IETI.model.Quotation;
-import edu.escuelaing.IETI.repository.DesignRepository;
 import edu.escuelaing.IETI.service.DesignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sun.security.krb5.internal.crypto.Des;
 
 import java.net.URI;
 import java.util.List;
@@ -27,15 +24,19 @@ public class DesignController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Design>> getAllPublicsDesigns() {
-        List<Design> designs = designService.getAllPublicsDesigns();
+    public ResponseEntity<List<Design>> getAllPublicDesigns() {
+        List<Design> designs = designService.getAllPublicDesigns();
         return ResponseEntity.ok(designs);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Design> findById(@PathVariable("id") String id) {
-        Design design = designService.getDesignById(id);
-        return ResponseEntity.ok(design);
+        try {
+            Design design = designService.getDesignById(id);
+            return ResponseEntity.ok(design);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/user/{userId}")
@@ -53,8 +54,12 @@ public class DesignController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Design> updateDesign(@PathVariable("id") String id, @RequestBody DesignDTO designDTO) {
-        Design updatedDesign = designService.updateDesign(id, designDTO);
-        return ResponseEntity.ok(updatedDesign);
+        try {
+            Design updatedDesign = designService.updateDesign(id, designDTO);
+            return ResponseEntity.ok(updatedDesign);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
@@ -63,36 +68,54 @@ public class DesignController {
         return ResponseEntity.ok(null);
     }
 
-    //////////////////////////////////////////////////////////////////////////////////
+    // Cotizaciones de los diseños
 
     @GetMapping("/{id}/quotation")
     public ResponseEntity<List<Quotation>> getAllQuotations(@PathVariable("id")  String id) {
-        List<Quotation> quotations = designService.getAllQuotations(id);
-        return ResponseEntity.ok(quotations);
+        try {
+            List<Quotation> quotations = designService.getAllQuotations(id);
+            return ResponseEntity.ok(quotations);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @GetMapping("/{id}/quotation/{idQuotation}")
-    public ResponseEntity<Quotation> findByQuotationsId(@PathVariable("id")  String id, @PathVariable("idQuotation") String idQuotation) {
-        Quotation quotation = designService.getQuotationById(id,idQuotation);
-        return ResponseEntity.ok(quotation);
+    @GetMapping("/quotation/{idQuotation}")
+    public ResponseEntity<Quotation> findByQuotationId(@PathVariable("idQuotation") String idQuotation) {
+        try {
+            Quotation quotation = designService.getQuotationById(idQuotation);
+            return ResponseEntity.ok(quotation);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/{id}/quotation")
-    public ResponseEntity<Quotation> createQuotation(@PathVariable("id")  String designId, @RequestBody QuotationDTO quotationDTO) {
-        Quotation createdQuotation = designService.saveQuotation(quotationDTO, designId);
-        URI createdQuotationUri = URI.create("/v1/design/" + designId + "/quotation/" + createdQuotation.getId());
-        return ResponseEntity.created(createdQuotationUri).body(createdQuotation);
+    public ResponseEntity<Quotation> createQuotation(@PathVariable("id") String designId,
+                                                     @RequestBody QuotationDTO quotationDTO) {
+        try {
+            Quotation createdQuotation = designService.saveQuotation(quotationDTO, designId);
+            URI createdQuotationUri = URI.create("/v1/design/" + designId + "/quotation/" + createdQuotation.getId());
+            return ResponseEntity.created(createdQuotationUri).body(createdQuotation);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @PutMapping("/{id}/quotation/{idQuotation}")
-    public ResponseEntity<Quotation> updateQuotation(@PathVariable("id") String designId, @PathVariable("idQuotation") String quotationId, @RequestBody DesignDTO designDTO) {
-        Quotation updatedQuotation = designService.updateQuotation(designId, quotationId,designDTO);
-        return ResponseEntity.ok(updatedQuotation);
+    @PutMapping("/quotation/{idQuotation}")
+    public ResponseEntity<Quotation> updateQuotation(@PathVariable("idQuotation") String quotationId,
+                                                     @RequestBody QuotationDTO quotationDTO) {
+        try {
+            Quotation updatedQuotation = designService.updateQuotation(quotationId, quotationDTO);
+            return ResponseEntity.ok(updatedQuotation);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping("/{id}/quotation/{idQuotation}")
-    public ResponseEntity<Void> deleteQuotation(@PathVariable("id") String designId, @PathVariable("idQuotation") String quotationId) {
-        designService.deleteQuotation(designId, quotationId);
+    @DeleteMapping("/quotation/{idQuotation}")
+    public ResponseEntity<Void> deleteQuotation(@PathVariable("idQuotation") String quotationId) {
+        designService.deleteQuotation(quotationId);
         return ResponseEntity.ok(null);
     }
 }
