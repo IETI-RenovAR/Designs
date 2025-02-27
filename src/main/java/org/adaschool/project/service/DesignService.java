@@ -1,13 +1,13 @@
-package edu.escuelaing.IETI.service;
+package org.adaschool.project.service;
 
-import edu.escuelaing.IETI.dto.DesignDTO;
-import edu.escuelaing.IETI.dto.QuotationDTO;
-import edu.escuelaing.IETI.exception.DesignNotFound;
-import edu.escuelaing.IETI.exception.QuotationNotFound;
-import edu.escuelaing.IETI.model.Design;
-import edu.escuelaing.IETI.model.Quotation;
-import edu.escuelaing.IETI.repository.DesignRepository;
-import edu.escuelaing.IETI.repository.QuotationRepository;
+import org.adaschool.project.dto.DesignDTO;
+import org.adaschool.project.dto.QuotationDTO;
+import org.adaschool.project.exception.DesignNotFound;
+import org.adaschool.project.exception.QuotationNotFound;
+import org.adaschool.project.model.Design;
+import org.adaschool.project.model.Quotation;
+import org.adaschool.project.repository.DesignRepository;
+import org.adaschool.project.repository.QuotationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

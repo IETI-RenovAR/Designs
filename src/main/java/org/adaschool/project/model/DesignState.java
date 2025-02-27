@@ -1,4 +1,4 @@
-package edu.escuelaing.IETI.model;
+package org.adaschool.project.model;
 
 public enum DesignState {
     CREATED,

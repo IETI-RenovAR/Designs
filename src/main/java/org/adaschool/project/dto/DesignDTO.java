@@ -1,7 +1,7 @@
-package edu.escuelaing.IETI.dto;
+package org.adaschool.project.dto;
 
-import edu.escuelaing.IETI.model.DesignState;
-import edu.escuelaing.IETI.model.Quotation;
+import org.adaschool.project.model.DesignState;
+import org.adaschool.project.model.Quotation;
 import lombok.Getter;
 import lombok.Setter;
 

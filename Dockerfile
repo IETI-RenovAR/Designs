@@ -14,7 +14,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Fase 2: Imagen final
-FROM openjdk:21
+FROM openjdk:17-openjdk-slim
 
 WORKDIR /app
 
@@ -23,9 +23,6 @@ COPY --from=builder /app/target/project-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto de la aplicación
 EXPOSE 8080
-
-# Define la variable de entorno para la conexión a MongoDB
-ENV DB_CONNECTION="mongodb://10.0.0.5:27017/mi_base_de_datos"
 
 # Comando para ejecutar la aplicación
 CMD ["java", "-jar", "app.jar"]

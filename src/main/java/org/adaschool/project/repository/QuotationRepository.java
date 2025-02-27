@@ -1,6 +1,6 @@
-package edu.escuelaing.IETI.repository;
+package org.adaschool.project.repository;
 
-import edu.escuelaing.IETI.model.Quotation;
+import org.adaschool.project.model.Quotation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

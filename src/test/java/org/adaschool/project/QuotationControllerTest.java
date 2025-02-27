@@ -1,9 +1,9 @@
-package edu.escuelaing.IETI;
+package org.adaschool.project;
 
-import edu.escuelaing.IETI.controller.DesignController;
-import edu.escuelaing.IETI.dto.QuotationDTO;
-import edu.escuelaing.IETI.model.Quotation;
-import edu.escuelaing.IETI.service.DesignService;
+import org.adaschool.project.controller.DesignController;
+import org.adaschool.project.dto.QuotationDTO;
+import org.adaschool.project.model.Quotation;
+import org.adaschool.project.service.DesignService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

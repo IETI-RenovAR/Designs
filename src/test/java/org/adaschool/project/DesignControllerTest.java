@@ -1,9 +1,9 @@
-package edu.escuelaing.IETI;
+package org.adaschool.project;
 
-import edu.escuelaing.IETI.controller.DesignController;
-import edu.escuelaing.IETI.dto.DesignDTO;
-import edu.escuelaing.IETI.model.Design;
-import edu.escuelaing.IETI.service.DesignService;
+import org.adaschool.project.controller.DesignController;
+import org.adaschool.project.dto.DesignDTO;
+import org.adaschool.project.model.Design;
+import org.adaschool.project.service.DesignService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;

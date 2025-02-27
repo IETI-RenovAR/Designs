@@ -1,12 +1,10 @@
-package edu.escuelaing.IETI.model;
+package org.adaschool.project.model;
 
-import edu.escuelaing.IETI.dto.QuotationDTO;
+import org.adaschool.project.dto.QuotationDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.concurrent.atomic.AtomicLong;
 
 @Setter
 @Getter

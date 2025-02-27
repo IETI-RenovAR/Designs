@@ -1,7 +1,7 @@
-package edu.escuelaing.IETI.model;
+package org.adaschool.project.model;
 
 
-import edu.escuelaing.IETI.dto.DesignDTO;
+import org.adaschool.project.dto.DesignDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;

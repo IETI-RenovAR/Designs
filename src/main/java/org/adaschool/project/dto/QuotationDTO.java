@@ -1,4 +1,4 @@
-package edu.escuelaing.IETI.dto;
+package org.adaschool.project.dto;
 
 import lombok.Getter;
 import lombok.Setter;

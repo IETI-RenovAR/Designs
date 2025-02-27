@@ -1,10 +1,10 @@
-package edu.escuelaing.IETI.controller;
+package org.adaschool.project.controller;
 
-import edu.escuelaing.IETI.dto.DesignDTO;
-import edu.escuelaing.IETI.dto.QuotationDTO;
-import edu.escuelaing.IETI.model.Design;
-import edu.escuelaing.IETI.model.Quotation;
-import edu.escuelaing.IETI.service.DesignService;
+import org.adaschool.project.dto.DesignDTO;
+import org.adaschool.project.dto.QuotationDTO;
+import org.adaschool.project.model.Design;
+import org.adaschool.project.model.Quotation;
+import org.adaschool.project.service.DesignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
