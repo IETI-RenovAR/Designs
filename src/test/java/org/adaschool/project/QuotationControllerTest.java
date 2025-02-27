@@ -6,34 +6,39 @@ import org.adaschool.project.model.Quotation;
 import org.adaschool.project.service.DesignService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(DesignController.class)
 class QuotationControllerTest {
 
-    @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @Mock
     private DesignService designService;
+
+    @InjectMocks
+    private DesignController designController;
 
     private Quotation quotation;
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(designController).build();
+
         quotation = new Quotation("1", "carpenter1", "500.00", false);
     }
 
@@ -79,7 +84,7 @@ class QuotationControllerTest {
     @Test
     void updateQuotation_ShouldReturnUpdatedQuotation() throws Exception {
         Quotation updatedQuotation = new Quotation("1", "carpenter1", "600.00", true);
-        when(designService.updateQuotation(Mockito.eq("1"), any(QuotationDTO.class))).thenReturn(updatedQuotation);
+        when(designService.updateQuotation(any(String.class), any(QuotationDTO.class))).thenReturn(updatedQuotation);
 
         mockMvc.perform(put("/v1/designs/quotations/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -93,7 +98,7 @@ class QuotationControllerTest {
 
     @Test
     void deleteQuotation_ShouldReturnOk() throws Exception {
-        Mockito.doNothing().when(designService).deleteQuotation("1");
+        doNothing().when(designService).deleteQuotation("1");
 
         mockMvc.perform(delete("/v1/designs/quotations/1"))
                 .andExpect(status().isOk());
