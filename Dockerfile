@@ -14,7 +14,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Fase 2: Imagen final
-FROM openjdk:17-openjdk-slim
+FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
